@@ -1,3 +1,5 @@
+``` Title: Multiple Inheritance with MRO and super() in Python ```
+
 # 1. Create a base class University. Derive Student and Teacher from it. 
 
 #    Then create TeachingAssistant that inherits from both Student and Teacher 
