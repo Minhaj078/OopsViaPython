@@ -254,20 +254,103 @@ def __init__(self, **kwargs):
     super().__init__(**kwargs)
 ```
 ### 8 Polymorphism
-- Polymorphism means same method name, different behavior.
-- Method Overriding
+ - Polymorphism means same method name, different behavior.
+ - Types of Polymorphism
+#### 1 Compile Time Polymorphism (Static / Early Binding)
+- Decision taken before program runs
+- ➜ Function Overloading
+    - Same function name, different parameters
+```python
+class Math:
+    def add(self, a, b, c=0):
+        return a + b + c
+
+m = Math()
+print(m.add(2,3))
+print(m.add(2,3,4))
+```
+- Another example
+```python
+class Fun:
+    def fun(self, x=None, y=None):
+
+        if x == None and y == None:
+            print("Hello This is Python Polymorphism!")
+            print("Thanks for Visit")
+
+        elif x != None and y == None:
+            f = 1
+            for i in range(1, x+1):
+                f *= i
+            print(f)
+
+        else:
+            print("Addition is :", x + y)
+
+
+# object creation
+ob = Fun()
+
+# different behaviours (polymorphism)
+ob.fun()          # no arguments
+ob.fun(5)         # one argument → factorial
+ob.fun(3, 4)      # two arguments → addition
+```
+➜ Operator Overloading
+- Same operator behaves differently for objects
+```python
+print(5 + 3)
+print("Hello " + "World")
+print([1,2] + [3,4])
+
+```
+#### 2️ Run Time Polymorphism (Dynamic / Late Binding)
+- Decision taken while program runs
+➜ Method Overriding (Most Important)
+- Child class changes parent class function
 ```python
 class Animal:
     def sound(self):
-        print("Some sound")
+        print("Animal makes sound")
 
 class Dog(Animal):
     def sound(self):
-        print("Bark")
+        print("Dog barks")
 
-obj = Dog()
-obj.sound()
+class Cat(Animal):
+    def sound(self):
+        print("Cat meows")
+
+a = Dog()
+a.sound()
+
+a = Cat()
+a.sound()
 ```
+#### 3 Duck Typing (Python Special Polymorphism)
+- Python checks behavior, not type
+- "If it walks like a duck and quacks like a duck — it's a duck"
+
+```python
+class Bird:
+    def fly(self):
+        print("Bird flying")
+
+class Airplane:
+    def fly(self):
+        print("Airplane flying")
+
+for obj in (Bird(), Airplane()):
+    obj.fly()
+```
+| Concept              | Happens In     | Key Idea                   |
+| -------------------- | -------------- | -------------------------- |
+| Overloading          | Same class     | Same name, diff parameters |
+| Overriding           | Parent → Child | Replace behavior           |
+| Operator Overloading | Objects        | +, -, *, etc               |
+| Duck Typing          | Python         | Method matters, not type   |
+
+
 ### 9 Abstraction
 - Abstraction hides implementation details and shows only essential features.
 ```python
