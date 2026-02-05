@@ -256,10 +256,12 @@ def __init__(self, **kwargs):
 ### 8 Polymorphism
  - Polymorphism means same method name, different behavior.
  - Types of Polymorphism
+   
 #### 1 Compile Time Polymorphism (Static / Early Binding)
 - Decision taken before program runs
 - ➜ Function Overloading
     - Same function name, different parameters
+      
 ```python
 class Math:
     def add(self, a, b, c=0):
@@ -298,16 +300,44 @@ ob.fun(3, 4)      # two arguments → addition
 ```
 ➜ Operator Overloading
 - Same operator behaves differently for objects
+
 ```python
 print(5 + 3)
 print("Hello " + "World")
 print([1,2] + [3,4])
-
 ```
+- Other example of Operator Overlaoding
+```python
+class A:
+    def __init__(self, x):
+        self.x = x
+
+    def __add__(self, other):
+        return self.x + other.x
+
+
+ob1 = A(10)
+ob2 = A(20)
+
+print(ob1 + ob2)
+```
+| Method     | Called When    |
+| ---------- | -------------- |
+| `__init__` | object created |
+| `__str__`  | print(object)  |
+| `__add__`  | +              |
+| `__sub__`  | -              |
+| `__mul__`  | *              |
+| `__len__`  | len(object)    |
+| `__eq__`   | ==             |
+| `__lt__`   | <              |
+
+
 #### 2️ Run Time Polymorphism (Dynamic / Late Binding)
 - Decision taken while program runs
 ➜ Method Overriding (Most Important)
 - Child class changes parent class function
+- 
 ```python
 class Animal:
     def sound(self):
@@ -327,6 +357,7 @@ a.sound()
 a = Cat()
 a.sound()
 ```
+
 #### 3 Duck Typing (Python Special Polymorphism)
 - Python checks behavior, not type
 - "If it walks like a duck and quacks like a duck — it's a duck"
@@ -343,6 +374,7 @@ class Airplane:
 for obj in (Bird(), Airplane()):
     obj.fly()
 ```
+
 | Concept              | Happens In     | Key Idea                   |
 | -------------------- | -------------- | -------------------------- |
 | Overloading          | Same class     | Same name, diff parameters |
@@ -353,6 +385,7 @@ for obj in (Bird(), Airplane()):
 
 ### 9 Abstraction
 - Abstraction hides implementation details and shows only essential features.
+
 ```python
 from abc import ABC, abstractmethod
 
